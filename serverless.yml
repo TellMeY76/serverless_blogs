@@ -1,0 +1,11 @@
+org: tellmey76
+app: my-first-app
+myWebsite:
+  component: "@serverless/tencent-website"
+  inputs:
+    code:
+      src: ./hexo-test01/public
+      index: index.html
+      error: index.html
+      region: ap-guangzhou
+      bucketName: my-bucket

@@ -95,11 +95,6 @@ ignore:
 ## Themes: https://hexo.io/themes/
 theme: ayer
 
-# Deployment
-## Docs: https://hexo.io/docs/deployment.html
-deploy:
-  type: ""
-
 live2d:
   enable: true
   scriptFrom: local
@@ -109,7 +104,7 @@ live2d:
   tagMode: false
   debug: false
   model:
-    use: live2d-widget-model-wanko
+    use: live2d-widget-model-hijiki
   display:
     position: right
     width: 150
@@ -117,4 +112,27 @@ live2d:
   mobile:
     show: true
   react:
-    opacity: 0.7
+    opacity: 0.9
+
+# Deployment
+## Docs: https://hexo.io/docs/deployment.html
+deploy:
+  type: git
+  repository: https://github.com/TellMeY76/TellMeY76.github.io.git
+  branch: master
+
+# hexo-generator-searchdb
+search:
+  path: search.xml
+  field: post
+  format: html
+
+feed:
+  type: atom
+  path: atom.xml
+  limit: 20
+  hub:
+  content:
+  content_limit: 140
+  content_limit_delim: " "
+  order_by: -date

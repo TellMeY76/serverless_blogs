@@ -23,28 +23,31 @@ grpc官网上提供了grpc-web这一解决方案，用来在web端使用grpc。�
 因为觉得方案一可能不够稳妥，我又到小程序的开放社区中，试图找到别人现有的gRPC解决方案，看了一圈，大部分都是在问能否实现的，不过在一个帖子中[点此直达](https://developers.weixin.qq.com/community/develop/doc/000e4452b7c608aa63c7282b451400?highLine=grpc)，我发现有官方人员称小程序的云函数可以使用gRPC。
 
 既然官方的人都说了，那就试试吧。云函数是在小程序云开发的一部分，所谓云开发，我感觉就是一套小程序的serverless服务方案吧。因为云函数使用的是Nodejs环境，用的也是js，所以对于前端来说上手不难。但是在开始的时候我还是走了一些弯路，因为一开始我都是照着grpc-web的方式在写，所以各种报错，直到出现了这个错误：
-`
+
+``` 
 ReferenceError: XMLHttpRequest is not defined
 
-`
+```
+
 害，整了半天，我忘了grpc-web是要在browser下运行的，可现在这是node环境呀。但是也还好，grpc官网中也提供了node使用grpc的方法，甚至比起grpc-web，使用起来更加方便，[文档地址](https://grpc.io/docs/quickstart/node/)。
 
 #### 踩到的坑：
 
 因为云函数使用的nodejs是在linux环境下的，所以像我这样用windows开发的同学，可能会看到类似这样的错误：
-`
+
+``` 
 Error: Failed to load gRPC binary module because it was not installed for the current system
 
 Expected directory: node-v57-linux-x64-glibc
 
 Found: [node-v64-win32-x64-unknow]
-`
+```
 
 解决这个问题也容易，修改一下npm install 语句即可：
-`
-npm i --production --unsafe-perm --target=8.9.0 --target_platform=linux --target_arch=x64 --target_libc=glibc --update-binary
 
-`
+``` 
+npm i --production --unsafe-perm --target=8.9.0 --target_platform=linux --target_arch=x64 --target_libc=glibc --update-binary
+```
 
 ### 小结：
 

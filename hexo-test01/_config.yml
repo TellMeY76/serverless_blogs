@@ -118,7 +118,7 @@ live2d:
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git
-  repository: https://github.com/TellMeY76/TellMeY76.github.io.git
+  repository: git@github.com:TellMeY76/TellMeY76.github.io.git
   branch: master
 
 # hexo-generator-searchdb
